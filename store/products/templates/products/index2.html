@@ -1,0 +1,33 @@
+{% extends 'products/base.html' %}
+
+{% load static %}
+
+{% block css %}
+    <!-- Custom styles for this template -->
+    <link href="{% static 'vendor/css/index.css' %}" rel="stylesheet">
+{%endblock%}
+
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 class="mt-5">Bookstore</h1>
+                <p>
+                    
+                    Discover a wide selection of books at Bookstore. Free worldwide shipping!
+                    Explore new releases and best sellers. Discounts up to 70% off in our outlet.
+                </p>
+                <button id="start-purchase-btn" type="button" class="btn btn-lg">
+                    <a id="start-purchase-link" href="{% url 'products:index' %}">
+                        Start shopping
+                    </a>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}
+
+
