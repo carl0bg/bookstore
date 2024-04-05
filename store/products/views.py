@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, HttpResponse, HttpResponseRedirect, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 
@@ -47,7 +47,13 @@ def basket_add(request, product_id):
         basket.quantity+=1
         basket.save()
 
-    return HttpResponseRedirect(request.META['HTTP_REFERER']) #возвращает на ту же страничку где было выполнено дейсствие 
+    # return HttpResponseRedirect(request.META['HTTP_REFERER']) #возвращает на ту же страничку где было выполнено дейсствие 
+    url = request.META.get('HTTP_REFERER', '/')
+    response = redirect(url)
+    response['Location'] += '#my-anchor'  # добавляем якорь для скроллинга
+
+    return response
+
 
 @login_required
 def basket_remove(request, basket_id):
