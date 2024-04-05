@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth, messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.views.generic import View
 
 from users.models import User
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
@@ -39,27 +40,7 @@ def registration(request):
     return render(request, 'users/registration.html', context)
 
 
-# def profile(request):
-#      if request.method == 'POST':
-#          form=UserProfileForm(instance = request.user, data = request.POST, files = request.FILES)
-#          if form.is_valid():
-#              form.save()
-#              return HttpResponseRedirect(reverse('users:profile'))
-#          else:
-#              print(form.errors)
-#      else:
-#         form = UserProfileForm(instance=request.user)
-#      baskets = Basket.objects.filter(user = request.user)
-#      total_sum = 0
-#      total_quintity = 0
-
-#      for bask in baskets:
-#          total_sum = total_sum*bask.sum()
-#          total_quintity = total_quintity+bask.quintity
-
-#      context={'title':'Store - Профиль', 'form': form, 'baskets': baskets, 'total_sum': total_sum, 'total_quintity': total_quintity}
-#      return render(request, 'users/profile.html', context)
-
+'''
 @login_required
 def profile(request):
    if request.method == 'POST': #меняем имя, если захотим редактировать
@@ -80,7 +61,27 @@ def profile(request):
    } #нужно делать с фильтром, потому что будут видны все товары, добавленные даже другими пользоватлеями
    #print(Product.objects.all().order_by('name'))
    return render(request, 'users/profile.html', context)
+'''
 
+class profile(View):
+    template_name = 'users/profile.html'
+    context = {'title': 'Store-Профиль'}
+
+    def get(self, request, *args, **kwargs):
+        form = UserProfileForm(instance = request.user)
+        self.context.update(form=form, baskets = Basket.objects.filter(user = request.user))
+        return render(request, self.template_name, self.context)
+
+    def post(self, request, *args, **kwargs):
+        form = UserProfileForm(instance = request.user, data = request.POST, files = request.FILES)
+        if form.is_valid():                                                
+            form.save()
+            return HttpResponseRedirect(reverse('users:profile'))
+        else:
+            print(form.errors) #выводим в консоль ошибку
+            # self.context.update(form=form, baskets=Basket.objects.filter(user=request.user))
+            return render(request, self.template_name, self.context)
+            
 
 def logout(request):
     auth.logout(request) #пользователь выйдет из системы
