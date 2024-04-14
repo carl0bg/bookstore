@@ -8,7 +8,31 @@ from users.models import User
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from products.models import Basket
 
-# Create your views here.
+
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.forms import model_to_dict
+from .serializers import UserSerializer
+
+
+class APIView(APIView):
+    def get(self, request):
+        lst = User.objects.all().values()
+        return Response({'stat': list(lst)})
+    
+    def post(self, request):
+        post_new = User.objects.create(title = request.data['title'], context = request.data['content'], cat_id = request.data['cat_id'])
+        return Response({'post':model_to_dict(post_new)}) #преобразовывает обьект джанго в словарь
+    
+
+# class APIView(generics.ListAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+
+
+
+
 
 
 def login(request):

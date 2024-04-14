@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     #my
     'products',
     'users',
+    ##
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

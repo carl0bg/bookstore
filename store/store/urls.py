@@ -23,12 +23,17 @@ from django.conf import settings #подключение наших настро
 from products.views import Index
 
 
+from users.views import APIView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Index.as_view(), name = 'index'),
     path('products/', include('products.urls', namespace='products')),
     path('users/', include('users.urls', namespace='users')),
+
+    ##
+    path('api/v1/userlist/', APIView.as_view())
 ]
 
 if settings.DEBUG:  

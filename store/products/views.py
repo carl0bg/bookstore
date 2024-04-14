@@ -6,7 +6,6 @@ from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 
 
-
 from common.utils import TitleMixin
 from products.models import Product, ProductCategory, Basket
 from users.models import User
