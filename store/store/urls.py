@@ -20,13 +20,13 @@ from django.conf.urls.static import static #для работы с изобра�
 from django.conf import settings #подключение наших настроек, так правильнее
 
 
-from products.views import index
+from products.views import Index
 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name = 'index'),
+    path('', Index.as_view(), name = 'index'),
     path('products/', include('products.urls', namespace='products')),
     path('users/', include('users.urls', namespace='users')),
 ]
