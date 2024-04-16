@@ -2,6 +2,8 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, User
 from users.models import User
 from django import forms
 
+from users.tasks import send_email_verification
+
 
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
@@ -41,6 +43,10 @@ class UserRegistrationForm(UserCreationForm):
          model = User
          fields = ('first_name', 'last_name', 'username','email', 'password1', 'password2')
 
+    def save(self, commit = True):
+        user = super(UserRegistrationForm, self).save(commit=True)
+        send_email_verification.delay(user.id)
+        return user
 
 class UserProfileForm(UserChangeForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={

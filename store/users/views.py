@@ -2,11 +2,13 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth, messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.views.generic import View
+from django.views.generic import View, TemplateView
+from store.common.utils import TitleMixin
 
 from users.models import User
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from products.models import Basket
+
 
 # Create your views here.
 
@@ -86,4 +88,14 @@ class profile(View):
 def logout(request):
     auth.logout(request) #пользователь выйдет из системы
     return HttpResponseRedirect(reverse('index'))
+
+
+class EmailVerificationView(TitleMixin, TemplateView):
+    title = 'Store - Подтверждение электронной почты'
+    template_name = 'users/email_verification.html'
+
+    def get(self, request, *args, **kwargs):
+        code = kwargs['code']
+        user = User.objects.get(email=kwargs['email'])
+        ### дописать
 
