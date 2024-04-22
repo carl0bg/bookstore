@@ -94,7 +94,7 @@ DATABASES = {
 }
 }
 
-
+DOMAIN_NAME = 'http://127.0.0.1:8000'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
