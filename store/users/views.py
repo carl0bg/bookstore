@@ -3,7 +3,7 @@ from django.contrib import auth, messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View, TemplateView
-from store.common.utils import TitleMixin
+from common.utils import TitleMixin
 
 from users.models import User
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
