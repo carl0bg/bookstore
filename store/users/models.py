@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-from django.conf import settings
+from store import settings
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.utils.timezone import now
@@ -10,6 +10,21 @@ from django.utils.timezone import now
 class User(AbstractUser):
     image = models.ImageField(upload_to='users_images', null = True, blank = True)
     is_verified_email= models.BooleanField(default=False)
+
+    ###
+    # email = models.EmailField(_("email address"), blank=True, unique= True,)
+    # is_active = models.BooleanField(
+    #     _("active"),
+    #     default=False,   #В идеале в будущем поменять на False чтобы активировалось через почту
+    #     help_text=_(
+    #         "Designates whether this user should be treated as active. "
+    #         "Unselect this instead of deleting accounts."
+    #     ),
+    # )
+
+    # USERNAME_FIELD = "email"
+    # REQUIRED_FIELDS = []
+    ###
 
 
 class EmailVerification(models.Model):
