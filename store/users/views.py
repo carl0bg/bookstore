@@ -7,7 +7,7 @@ from common.utils import TitleMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView, UpdateView
 
-from users.models import User, EmailVerification
+from users.models import User #, EmailVerification
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from products.models import Basket
 
@@ -69,6 +69,7 @@ class UserRegistrationView(FormView):
 
     def form_valid(self, form):
         user, created = User.objects.get_or_create(username = form.cleaned_data['username'])
+        print(user.email, user.username)
         new_pass = None
 
         if created:
@@ -164,18 +165,18 @@ def logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 
-class EmailVerificationView(TitleMixin, TemplateView):
-    title = 'Store - Подтверждение электронной почты'
-    template_name = 'users/email_verification.html'
+# class EmailVerificationView(TitleMixin, TemplateView):
+#     title = 'Store - Подтверждение электронной почты'
+#     template_name = 'users/email_verification.html'
 
-    def get(self, request, *args, **kwargs):
-        code = kwargs['code']
-        user = User.objects.get(email=kwargs['email'])
-        email_verifications = EmailVerification.objects.filter(user = user, code = code)
-        if email_verifications.exists() and not email_verifications.first().is_expired():
-            user.is_verified_email = True
-            user.save()
-            return super(EmailVerificationView, self).get(request, *args, **kwargs)
-        else:
-            return HttpResponseRedirect(reverse('index'))
+#     def get(self, request, *args, **kwargs):
+#         code = kwargs['code']
+#         user = User.objects.get(email=kwargs['email'])
+#         email_verifications = EmailVerification.objects.filter(user = user, code = code)
+#         if email_verifications.exists() and not email_verifications.first().is_expired():
+#             user.is_verified_email = True
+#             user.save()
+#             return super(EmailVerificationView, self).get(request, *args, **kwargs)
+#         else:
+#             return HttpResponseRedirect(reverse('index'))
 

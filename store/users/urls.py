@@ -1,5 +1,5 @@
 from django.urls import path
-from users.views import login, profile, logout, EmailVerificationView, UserRegistrationView, register_confirm
+from users.views import login, profile, logout, UserRegistrationView, register_confirm #,EmailVerificationView
 from django.contrib.auth.decorators import login_required
 
 app_name = 'users'
