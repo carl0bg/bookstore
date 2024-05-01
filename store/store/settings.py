@@ -158,7 +158,7 @@ EMAIL_USE_SSL = True
 
 
 EMAIL_HOST_USER = 'carlbg000@yandex.ru'
-EMAIL_HOST_PASSWORD= 'kdiuqmmwustoycaj'
+EMAIL_HOST_PASSWORD= 'lyzyczsewmlxwcdc'
 DEFAULT_FROM_EMAIL = 'carlbg000@yandex.ru'
 
 

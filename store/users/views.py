@@ -107,15 +107,20 @@ def form_email(request, form):
         print(user.email, user.username)
         new_pass = None
 
-        if created:
+
+        if user.is_verified_email is False:
             alphabet = string.ascii_letters + string.digits
             new_pass = ''.join(secrets.choice(alphabet) for i in range(8))
+            print(f'new_pass {new_pass}')
             user.set_password(new_pass)
             user.save(update_fields=["password", ])
 
-        if new_pass or user.is_verified_email is False:
+
+
             token = uuid.uuid4().hex
+            print(f'token = {token}')
             redis_key = settings.C_USER_CONFIRMATION_KEY.format(token=token)
+            print(f'redis = {redis_key}')
             cache.set(redis_key, {"user_id": user.id}, timeout=settings.C_USER_CONFIRMATION_TIMEOUT)
 
             confirm_link = request.build_absolute_uri(
