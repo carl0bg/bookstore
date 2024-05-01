@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, User
 from users.models import User
 from django import forms
 
-from users.tasks import send_email_verification
+# from users.tasks import send_email_verification
 
 
 class UserLoginForm(AuthenticationForm):
@@ -48,7 +48,7 @@ class UserLoginForm(AuthenticationForm):
 #         send_email_verification(user.id)
 #         return user
     
-class UserRegistrationForm(forms.Form):
+class UserRegistrationForm(UserCreationForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={
          'class':"form-control py-4",
          'placeholder': "Введите имя"}))
@@ -67,10 +67,17 @@ class UserRegistrationForm(forms.Form):
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
          'class':"form-control py-4",
          'placeholder': "Подтвердите пароль"}))  
+    
      
     class Meta:
          model = User
          fields = ('first_name', 'last_name', 'username','email', 'password1', 'password2')
+
+
+#     def save(self, commit = True):
+#         user = super(UserRegistrationForm, self).save(commit=True)
+#         return user
+    
 
 #     def clean_confirmation(self):
 #           if self.cleaned_data['confirmation'] is not True:

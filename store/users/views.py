@@ -61,13 +61,48 @@ def login(request):
 #     title = 'Store - Регистрация'
 
 
-class UserRegistrationView(FormView):
-    form_class = UserRegistrationForm
-    template_name = 'users/registration.html'
-    success_url = reverse_lazy('users:login')
+# class UserRegistrationView(FormView):
+#     form_class = UserRegistrationForm
+#     template_name = 'users/registration.html'
+#     success_url = reverse_lazy('users:login')
 
 
-    def form_valid(self, form):
+#     def form_valid(self, form):
+#         user, created = User.objects.get_or_create(username = form.cleaned_data['username'])
+#         print(user.email, user.username)
+#         new_pass = None
+
+#         if created:
+#             alphabet = string.ascii_letters + string.digits
+#             new_pass = ''.join(secrets.choice(alphabet) for i in range(8))
+#             user.set_password(new_pass)
+#             user.save(update_fields=["password", ])
+
+#         if new_pass or user.is_verified_email is False:
+#             token = uuid.uuid4().hex
+#             redis_key = settings.C_USER_CONFIRMATION_KEY.format(token=token)
+#             cache.set(redis_key, {"user_id": user.id}, timeout=settings.C_USER_CONFIRMATION_TIMEOUT)
+
+#             confirm_link = self.request.build_absolute_uri(
+#                 reverse_lazy(
+#                     "users:register_confirm", kwargs={"token": token}
+#                 )
+#             )
+#             message = _(f"follow this link %s \n"
+#                         f"to confirm! \n" % confirm_link)
+#             if new_pass:
+#                 message += f"Your new password {new_pass} \n "
+
+#             send_mail(
+#                 subject= "Please confirm your registration!",
+#                 message=message,
+#                 from_email="carlbg000@yandex.ru",
+#                 recipient_list=[user.email, ]
+#             )
+#         return super().form_valid(form)
+
+
+def form_email(request, form):
         user, created = User.objects.get_or_create(username = form.cleaned_data['username'])
         print(user.email, user.username)
         new_pass = None
@@ -83,7 +118,7 @@ class UserRegistrationView(FormView):
             redis_key = settings.C_USER_CONFIRMATION_KEY.format(token=token)
             cache.set(redis_key, {"user_id": user.id}, timeout=settings.C_USER_CONFIRMATION_TIMEOUT)
 
-            confirm_link = self.request.build_absolute_uri(
+            confirm_link = request.build_absolute_uri(
                 reverse_lazy(
                     "users:register_confirm", kwargs={"token": token}
                 )
@@ -99,7 +134,21 @@ class UserRegistrationView(FormView):
                 from_email="carlbg000@yandex.ru",
                 recipient_list=[user.email, ]
             )
-        return super().form_valid(form)
+
+
+def registration(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(data = request.POST)
+        if form.is_valid():
+            # form_email(request= request, form = form)
+            form.save() #сохраняем даныне в базе данных
+            form_email(request=request, form = form)
+            messages.success(request, 'Поздравляем! Вы успешно зарегестрировались!')
+            return HttpResponseRedirect(reverse('users:login'))
+    else: 
+        form = UserRegistrationForm()
+    context = {'form': form}
+    return render(request, 'users/registration.html', context)
 
 
 
