@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize', #Набор фильтров шаблонов Django, полезных для добавления «человечности» к данным. (use intcomma)
     #my
     'products',
     'users',
@@ -65,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #my
+                'products.context_processors.baskets',
             ],
         },
     },
