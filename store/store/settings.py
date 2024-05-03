@@ -94,7 +94,7 @@ DATABASES = {
 }
 }
 
-
+DOMAIN_NAME = 'http://127.0.0.1:8000'  #не уверен что здесь нужно писать
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -149,3 +149,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 LOGIN_URL = '/users/login/'
+
+###email###
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+
+EMAIL_HOST_USER = 'carlbg000@yandex.ru'
+EMAIL_HOST_PASSWORD= 'lyzyczsewmlxwcdc'
+DEFAULT_FROM_EMAIL = 'carlbg000@yandex.ru'
+
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+    }
+}
+
+C_USER_CONFIRMATION_KEY = "user_confirmation_{token}" #для редиса
+C_USER_CONFIRMATION_TIMEOUT = 300
+
+

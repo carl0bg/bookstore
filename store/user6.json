@@ -1,0 +1,262 @@
+[
+    {
+        "model": "users.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$TdoNzxUYZBPtIHsX19kJdu$oP5b/uOF9lnjhhcLvSHkDFR4kOoQl/8JfOjys9abZYg=",
+            "last_login": "2024-04-27T13:39:09.713Z",
+            "is_superuser": true,
+            "username": "dima",
+            "first_name": "Дмитрий",
+            "last_name": "Карлышев",
+            "email": "dmitrijkarlysev0493@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2024-03-21T17:57:35.417Z",
+            "image": "users_images/RM473_Миньон__Миньоны__вид_5__1265х1500_мм_.jpg",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$tp9fKng7azVIdpICOO7lTb$OmNjrLyfAyNxrD2Vrfop8zgN2qHEun/ZBmfrbEbECEo=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "dimas",
+            "first_name": "dimas",
+            "last_name": "karl",
+            "email": "dmitrijkarlysev0493@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-03-23T11:57:32.475Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$Hvx3qVM9mCcrm1WQZJauck$in5ce22gSirpeZ6MNjr8No1z+AckQ0v4Kd6JYliElSA=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "qwer",
+            "first_name": "qwer",
+            "last_name": "h",
+            "email": "dmitrijkarlysev0493@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-03-23T14:46:29.250Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$0YM6Xnd9UAIZhwbEtmKEE9$bawd7q8QRvy2AOjICfDzsVT3Z++AE8hJNoDAcAjRdIk=",
+            "last_login": "2024-03-30T07:05:10.104Z",
+            "is_superuser": false,
+            "username": "nasty",
+            "first_name": "nasty",
+            "last_name": "erm",
+            "email": "hdk@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-03-30T07:04:24.331Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$0uLmWuIaFdyg5sUa3HUVib$elWTFBO0d8fwTbRG2vTKwjxgxOaxacLJWYWy+enFunk=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "her",
+            "first_name": "her",
+            "last_name": "her",
+            "email": "dmitrijkarlysev0493@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-04-22T12:23:39.896Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 6,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$uZ8DqouoAwTjrXALCcJzeC$to4PJhiz0X7b8E2Agh4UBuIoLv9LvQFRay0xr7a5EZo=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "kkk",
+            "first_name": "kkk",
+            "last_name": "kkk",
+            "email": "dmitrijkarlysev0493@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-04-22T16:28:48.758Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$ZpgVNfMyffOHjQXmvKl96e$jexbUVTugn/Jz3RefNEviwFMH+rUsbzsHtWgQ8Sqsyg=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "kola",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-04-23T13:13:09.866Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 8,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$XjXTQmuGPeP4RplkefOCPE$6wF3g2bbmVNLXllZl7mUP130NpwxlwRr0j5ST0d+KfA=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "priv",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-04-23T13:19:56.565Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 9,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$dYD312jCUcLQ6qeTkoFJqy$v7Y6//l5mi24Mhfs8KRwvnVaoqB/5a8OGzTQqQyftZg=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "dela",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-04-23T13:35:02.532Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 10,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$Oi9DSDM1lOReT8DUruP9zW$rYhCYRZIndX1X/gF69fcZN0PiWcctjP045urNmBHar4=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "nasta",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-04-23T15:16:46.961Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 11,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$pc6llN4dI1TT87Nxb4Ok6k$4AzOG+Ps++SV4Xhn77He8mdia64vD3PwILtQYP63x7k=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "dmitru",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-04-28T14:26:57.222Z",
+            "image": "",
+            "is_verified_email": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 12,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$gfueelGSqZEyIx9ydJ4VQ6$LfAVm7XPwQZV+XxMrwwP45/z7hPSrceIrX2Ncgfkf5M=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "dimasik1",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-04-28T14:49:13.011Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.user",
+        "pk": 13,
+        "fields": {
+            "password": "pbkdf2_sha256$720000$NFY7VUyzwy1V9VJjkgYAbB$RANQZQnuNlhPwoc4bCWTLcbWm/3fVk8wkujZlq9vASg=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "qwert0",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2024-04-28T15:43:38.853Z",
+            "image": "",
+            "is_verified_email": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
