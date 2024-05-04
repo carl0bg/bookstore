@@ -91,3 +91,5 @@ db.sqlite3
 media
 static
 venv
+settings.py
+*.json
