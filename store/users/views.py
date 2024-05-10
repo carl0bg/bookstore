@@ -41,17 +41,28 @@ class APIView(APIView):
         serializer = UserSerializer(data= request.data)
         serializer.is_valid(raise_exception=True) #проверяем по UserSerial валидатность
 
+        serializer.save() #автоматически вызовет UserSerializer.create
 
-        post_new = User.objects.create(
-            username = request.data['username'],
-            password = request.data['password']
-        )
-        return Response({'post': UserSerializer(post_new).data}) #model_to_dict - преобразует в словарь
+        return Response({'post': serializer.data}) #model_to_dict - преобразует в словарь
     
-
-# class APIView(generics.ListAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
+    def put(self, request, *args, **kwargs):
+        print(f'kwargs {kwargs}')
+        pk = kwargs.get("pk", None)
+        print(f'pk {pk}')
+        if not pk:
+            return Response({"error": "Method PUT not allowed"})
+        
+        try:
+            instance = User.objects.get(pk = pk)
+            print(f'inst {instance}')
+        except:
+            return Response({"error": "Method PUT not exists"})
+        
+        serializer = UserSerializer(data = request.data, instance= instance)
+        print(f'serial {serializer}')
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"post": serializer.data})
 
 
 

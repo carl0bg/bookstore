@@ -33,7 +33,8 @@ urlpatterns = [
     path('users/', include('users.urls', namespace='users')),
 
     ##
-    path('api/v1/userlist/', APIView.as_view())
+    path('api/v1/userlist/', APIView.as_view()),
+    path('api/v1/userlist/<int:pk>/', APIView.as_view()),
 ]
 
 if settings.DEBUG:  

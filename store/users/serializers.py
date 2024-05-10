@@ -23,7 +23,20 @@ class UserSerializer(serializers.Serializer):
    username = serializers.CharField()
    email = serializers.CharField(read_only = True)
    
+   def create(self, validated_data):
+      return User.objects.create(**validated_data) #распаковываем validated_data который приходит с пост запроса
 
+   def update(self, instance, validated_data):  #instance - ссылок на объект women
+      instance.first_name = validated_data.get('first_name', instance.first_name)
+      instance.last_name = validated_data.get('last_name', instance.last_name)
+      instance.image = validated_data.get('image', instance.image)
+      instance.username = validated_data.get('username', instance.username)
+      instance.email = validated_data.get('email', instance.email)
+      instance.save() #сохранить данные в базе данных
+      return instance
+
+
+      
 
 
 
