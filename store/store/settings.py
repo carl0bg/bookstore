@@ -38,24 +38,18 @@ env= environ.Env(
     DEFAULT_FROM_EMAIL = (str),
 
 )
-# env = environ.Env()
-# environ.Env.read_env()
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Take environment variables from .env file
-environ.Env.read_env(BASE_DIR / '.env')
-# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
+environ.Env.read_env(os.path.join(f'{BASE_DIR}/store', '.env'))
 
 
 SECRET_KEY = env('SECRET_KEY')
 
 
-DEBUG = env('DEBUG')
-
+DEBUG = (env('DEBUG'))
 
 
 ALLOWED_HOSTS = ['*']
