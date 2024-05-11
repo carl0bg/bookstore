@@ -67,6 +67,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize', #Набор фильтров шаблонов Django, полезных для добавления «человечности» к данным. (use intcomma)
+    
+    'rest_framework',
+    'django_extensions',
+    
     #my
     'products',
     'users',
