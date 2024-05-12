@@ -18,13 +18,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static #для работы с изображениями(статикой)
 from django.conf import settings #подключение наших настроек, так правильнее
-
-
 from products.views import Index
 
 
 from users.views import APIView
 
+
+from rest_framework_swagger.views import get_swagger_view
+from rest_framework.routers import DefaultRouter
+from users.views_test import PostViews
+
+schema_view = get_swagger_view(title = 'Two Demo API')
+router = DefaultRouter()
+router.register('postsV', PostViews, 'TestView')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,7 +41,11 @@ urlpatterns = [
     ##
     path('api/v1/userlist/', APIView.as_view()),
     path('api/v1/userlist/<int:pk>/', APIView.as_view()),
+    path('swagger/', schema_view),
 ]
+
+urlpatterns += router.urls
+
 
 if settings.DEBUG:  
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) #для просмотреа фотографии в новом окне(admin)

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users',
     ##
     'rest_framework',
+    'rest_framework_swagger',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # 'libraries': {
+            #     'staticfiles': 'django.temlatetags.static',
+            # }
         },
     },
 ]
@@ -176,3 +180,12 @@ C_USER_CONFIRMATION_KEY = "user_confirmation_{token}" #для редиса
 C_USER_CONFIRMATION_TIMEOUT = 300
 
 
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        'rest_framework.permissions.AllowAny',
+    ],
+    # "DEFAULT_AUTHENTICATION_CLASSES": (
+    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # ),
+    "DEFAULT_SCHEMA_CLASS": 'rest_framework.schemas.coreapi.AutoSchema', #openapi
+}
