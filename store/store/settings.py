@@ -66,11 +66,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django.contrib.humanize', #Набор фильтров шаблонов Django, полезных для добавления «человечности» к данным. (use intcomma)
     
     'rest_framework',
     'django_extensions',
     
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.github',
+
     #my
     'products',
     'users',
@@ -84,6 +90,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'allauth.account.middleware.AccountMiddleware', #для oauth
 ]
 
 ROOT_URLCONF = 'store.urls'
@@ -218,3 +226,19 @@ C_USER_CONFIRMATION_KEY = "user_confirmation_{token}" #для редиса
 C_USER_CONFIRMATION_TIMEOUT = 300
 
 
+
+#OAuth
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'github': {
+#         'SCOPE': [
+#             'user',
+#         ],
+#     }
+# }
