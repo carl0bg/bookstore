@@ -75,7 +75,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.github',
 
     #my
     'products',
@@ -90,6 +90,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.contrib.sites.models.Site',
 
     'allauth.account.middleware.AccountMiddleware', #для oauth
 ]
@@ -99,7 +100,7 @@ ROOT_URLCONF = 'store.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -235,10 +236,12 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'github': {
-#         'SCOPE': [
-#             'user',
-#         ],
-#     }
-# }
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'SCOPE': [
+            'user',
+        ],
+    }
+}
+
+LOGIN_REDIRECT_URL  =  "/"  
